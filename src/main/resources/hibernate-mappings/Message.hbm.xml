@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="edu.fullerton.csu.jmtran.projectx.model" default-cascade="none">
+
+    <class name="Message" table="MC_MESSAGE">
+
+        <id name="id" column="ID" type="long"/>
+
+        <property name="subject" type="text" column="SUBJECT"/>
+        <property name="message" type="text" column="MESSAGE"/>
+
+    </class>
+
+</hibernate-mapping>

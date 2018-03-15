@@ -1,0 +1,46 @@
+group 'edu.fullerton.csu.jmtran'
+version '0.0.1-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+    angularJsWebJarVersion = '1.6.9'
+    bootstrapWebJarVersion = '3.3.7-1'
+    commonsDbcpVersion = '1.4'
+    hibernateVersion = '3.6.10.Final'
+    hsqldbVersion = '2.4.0'
+    javassistVersion = '3.12.1.GA'
+    jstlVersion = '1.2'
+    springFrameworkVersion = '3.2.18.RELEASE'
+    webjarsLocatorVersion = '0.30'
+}
+
+dependencies {
+    // Database dependency
+    runtime "org.hsqldb:hsqldb:${hsqldbVersion}"
+
+    compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
+    compile "javax.servlet:jstl:${jstlVersion}"
+    compile "org.springframework:spring-jdbc:${springFrameworkVersion}"
+    compile "org.springframework:spring-orm:${springFrameworkVersion}"
+    compile "org.springframework:spring-webmvc:${springFrameworkVersion}"
+    compile "org.webjars:angularjs:${angularJsWebJarVersion}"
+    compile "org.webjars:bootstrap:${bootstrapWebJarVersion}"
+    compile "org.webjars:webjars-locator:${webjarsLocatorVersion}"
+
+    runtime "javassist:javassist:${javassistVersion}"
+    runtime "org.hibernate:hibernate-core:${hibernateVersion}"
+}
+
+war {
+    archiveName 'message-center.war'
+}
