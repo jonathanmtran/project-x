@@ -1,14 +1,12 @@
 package edu.fullerton.csu.jmtran.projectx.dao;
 
 import edu.fullerton.csu.jmtran.projectx.model.Message;
+import edu.fullerton.csu.jmtran.projectx.model.MessageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository("messageDao")
@@ -35,16 +33,5 @@ public class JdbcMessageDao implements MessageDao {
         return message;
     }
 
-    private static final class MessageMapper implements RowMapper<Message> {
-        @Override
-        public Message mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Message message = new Message();
 
-            message.setId(rs.getString("id"));
-            message.setSubject(rs.getString("subject"));
-            message.setMessage(rs.getString("message"));
-
-            return message;
-        }
-    }
 }
