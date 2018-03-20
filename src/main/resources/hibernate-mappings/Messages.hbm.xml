@@ -5,13 +5,11 @@
 
 <hibernate-mapping package="edu.fullerton.csu.jmtran.projectx.model" default-cascade="none">
 
-    <class name="Message" table="MC_MESSAGE">
-
+    <class name="Message" table="MESSAGES">
         <id name="id" column="ID" type="long"/>
 
         <property name="subject" type="text" column="SUBJECT"/>
         <property name="message" type="text" column="MESSAGE"/>
-
     </class>
 
 </hibernate-mapping>

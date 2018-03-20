@@ -38,10 +38,15 @@
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
             </props>
         </property>
-        <property name="mappingResources">
+        <property name="mappingLocations">
             <list>
-                <value>hibernate-mappings/Message.hbm.xml</value>
+                <value>classpath:hibernate-mappings/*.hbm.xml</value>
             </list>
+        </property>
+        <property name="namingStrategy">
+            <bean class="edu.fullerton.csu.jmtran.projectx.NamingStrategy">
+                <property name="prefix" value="MC_" />
+            </bean>
         </property>
     </bean>
 

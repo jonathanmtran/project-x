@@ -38,7 +38,7 @@ dependencies {
     compile "org.webjars:webjars-locator:${webjarsLocatorVersion}"
 
     runtime "javassist:javassist:${javassistVersion}"
-    runtime "org.hibernate:hibernate-core:${hibernateVersion}"
+    compile "org.hibernate:hibernate-core:${hibernateVersion}"
 }
 
 war {
