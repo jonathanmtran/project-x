@@ -50,6 +50,14 @@
         </property>
     </bean>
 
+    <bean class="edu.fullerton.csu.jmtran.projectx.messaging.service.EmailService">
+        <property name="mailSender">
+            <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+                <property name="host" value="smtp.example.com" />
+            </bean>
+        </property>
+    </bean>
+
     <context:component-scan base-package="edu.fullerton.csu.jmtran.projectx" />
 
 </beans>

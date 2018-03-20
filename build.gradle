@@ -19,6 +19,7 @@ ext {
     hibernateVersion = '3.6.10.Final'
     hsqldbVersion = '2.4.0'
     javassistVersion = '3.12.1.GA'
+    javaMailVersion = '1.6.1'
     jstlVersion = '1.2'
     springFrameworkVersion = '3.2.18.RELEASE'
     webjarsLocatorVersion = '0.30'
@@ -29,7 +30,9 @@ dependencies {
     runtime "org.hsqldb:hsqldb:${hsqldbVersion}"
 
     compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
+    compile "javax.mail:mail-api:${javaMailVersion}"
     compile "javax.servlet:jstl:${jstlVersion}"
+    compile "org.springframework:spring-context-support:${springFrameworkVersion}"
     compile "org.springframework:spring-jdbc:${springFrameworkVersion}"
     compile "org.springframework:spring-orm:${springFrameworkVersion}"
     compile "org.springframework:spring-webmvc:${springFrameworkVersion}"
