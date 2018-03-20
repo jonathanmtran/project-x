@@ -9,6 +9,7 @@
         <id name="id" column="ID" type="long"/>
 
         <property name="subject" type="text" column="SUBJECT"/>
+        <property name="messageAbstract" type="text" column="MESSAGE_ABSTRACT"/>
         <property name="message" type="text" column="MESSAGE"/>
     </class>
 

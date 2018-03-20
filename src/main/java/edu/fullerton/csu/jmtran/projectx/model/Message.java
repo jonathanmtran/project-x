@@ -3,6 +3,7 @@ package edu.fullerton.csu.jmtran.projectx.model;
 public class Message {
     private String id;
     private String subject;
+    private String messageAbstract;
     private String message;
 
     public Message() {
@@ -21,6 +22,14 @@ public class Message {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getMessageAbstract() {
+        return messageAbstract;
+    }
+
+    public void setMessageAbstract(String messageAbstract) {
+        this.messageAbstract = messageAbstract;
     }
 
     public String getSubject() {
