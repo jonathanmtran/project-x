@@ -11,6 +11,7 @@
         <property name="userId" column="USER_ID" type="long" />
         <property name="messageId" column="MESSAGE_ID" type="long" />
         <property name="massMessagingId" column="MASS_MESSAGING_ID" type="long" />
+        <property name="messagingService" column="MESSAGING_SERVICE" type="string" />
         <property name="receivedDate" column="RECEIVED_DATE" type="timestamp"/>
     </class>
 

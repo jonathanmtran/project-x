@@ -5,6 +5,7 @@ public class MailboxMessage {
     private String userId;
     private String messageId;
     private String massMessagingId;
+    private String messagingService;
     private String receivedDate;
 
     public MailboxMessage() {
@@ -41,6 +42,14 @@ public class MailboxMessage {
 
     public void setMassMessagingId(String massMessagingId) {
         this.massMessagingId = massMessagingId;
+    }
+
+    public String getMessagingService() {
+        return messagingService;
+    }
+
+    public void setMessagingService(String messagingService) {
+        this.messagingService = messagingService;
     }
 
     public String getReceivedDate() {
