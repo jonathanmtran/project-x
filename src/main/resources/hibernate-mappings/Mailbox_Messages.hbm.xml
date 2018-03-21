@@ -8,8 +8,8 @@
     <class name="MailboxMessage" table="MAILBOX_MESSAGES">
         <id name="id" column="ID" type="long"/>
 
-        <property name="userId" column="USER_ID" type="long" />
-        <property name="messageId" column="MESSAGE_ID" type="long" />
+        <many-to-one name="userId" column="USER_ID" class="edu.fullerton.csu.jmtran.projectx.model.User" />
+        <many-to-one name="messageId" column="MESSAGE_ID" class="edu.fullerton.csu.jmtran.projectx.model.Message" />
         <property name="massMessagingId" column="MASS_MESSAGING_ID" type="long" />
         <property name="messagingService" column="MESSAGING_SERVICE" type="string" />
         <property name="receivedDate" column="RECEIVED_DATE" type="timestamp"/>
