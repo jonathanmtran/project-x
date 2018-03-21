@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="edu.fullerton.csu.jmtran.projectx.model" default-cascade="none">
+
+    <class name="User" table="USERS">
+        <id name="id" column="USER_ID" type="string"/>
+
+        <map name="attributes">
+            <key column="USER_ID"/>
+            <index column="KEY" type="string" />
+            <one-to-many class="UserAttribute"/>
+        </map>
+    </class>
+
+    <class name="UserAttribute" table="USER_ATTRIBUTES">
+        <id name="id" column="ID" type="long">
+            <generator class="native"/>
+        </id>
+
+        <property name="key" column="KEY" type="string" />
+        <property name="value" column="VALUE" type="string" />
+    </class>
+
+</hibernate-mapping>

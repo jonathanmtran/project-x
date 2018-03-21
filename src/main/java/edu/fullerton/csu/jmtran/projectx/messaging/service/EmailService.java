@@ -2,12 +2,14 @@ package edu.fullerton.csu.jmtran.projectx.messaging.service;
 
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 
+import edu.fullerton.csu.jmtran.projectx.model.User;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
-public class EmailService extends AbstractMessagingService {
+public class EmailService implements MessagingService {
     private String name = "E-mail";
+    private String attributeKey = this.getClass().getCanonicalName() + ".emailAddress";
 
     private MailSender mailSender;
 
@@ -20,9 +22,15 @@ public class EmailService extends AbstractMessagingService {
     }
 
     @Override
-    public boolean sendMessage(String recipient, Message message) {
+    public boolean sendMessage(User recipient, Message message) {
+        String emailAddress = (String) recipient.getAttributes().getOrDefault(this.attributeKey, "");
+
+        if(emailAddress.isEmpty()) {
+            return false;
+        }
+
         SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo(recipient);
+        email.setTo(emailAddress);
         email.setSubject(message.getSubject());
         email.setText(message.getMessage());
 
