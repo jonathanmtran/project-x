@@ -6,7 +6,9 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
-public class EmailService implements MessagingService {
+public class EmailService extends AbstractMessagingService {
+    private String name = "E-mail";
+
     private MailSender mailSender;
 
     public MailSender getMailSender() {
