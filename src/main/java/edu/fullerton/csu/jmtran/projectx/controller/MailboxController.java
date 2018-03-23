@@ -2,7 +2,6 @@ package edu.fullerton.csu.jmtran.projectx.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import sun.misc.Request;
 
 @Controller
 public class MailboxController {
