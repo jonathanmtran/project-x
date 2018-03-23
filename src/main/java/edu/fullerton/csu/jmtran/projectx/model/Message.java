@@ -1,7 +1,7 @@
 package edu.fullerton.csu.jmtran.projectx.model;
 
 public class Message {
-    private String id;
+    private long id;
     private String subject;
     private String messageAbstract;
     private String message;
@@ -10,17 +10,17 @@ public class Message {
         // Do nothing
     }
 
-    public Message(String id, String subject, String message) {
+    public Message(long id, String subject, String message) {
         this.id = id;
         this.subject = subject;
         this.message = message;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

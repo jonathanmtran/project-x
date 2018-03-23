@@ -11,7 +11,7 @@ public final class MessageMapper implements RowMapper<Message> {
     public Message mapRow(ResultSet rs, int rowNum) throws SQLException {
         Message message = new Message();
 
-        message.setId(rs.getString("id"));
+        message.setId(rs.getLong("id"));
         message.setSubject(rs.getString("subject"));
         message.setMessage(rs.getString("message"));
 

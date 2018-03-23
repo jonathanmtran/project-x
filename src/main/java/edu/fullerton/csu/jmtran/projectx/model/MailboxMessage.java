@@ -1,7 +1,7 @@
 package edu.fullerton.csu.jmtran.projectx.model;
 
 public class MailboxMessage {
-    private String id;
+    private long id;
     private String userId;
     private String messageId;
     private String massMessagingId;
@@ -12,11 +12,11 @@ public class MailboxMessage {
         // Do nothing
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -7,7 +7,7 @@
 
     <class name="MailboxMessage" table="MAILBOX_MESSAGES">
         <id name="id" column="ID" type="long">
-            <generator class="native"/>
+            <generator class="identity"/>
         </id>
 
         <many-to-one name="userId" column="USER_ID" class="edu.fullerton.csu.jmtran.projectx.model.User" />

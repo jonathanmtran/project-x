@@ -7,7 +7,7 @@
 
     <class name="Message" table="MESSAGES">
         <id name="id" column="ID" type="long">
-            <generator class="native"/>
+            <generator class="identity"/>
         </id>
 
         <property name="subject" type="text" column="SUBJECT"/>
