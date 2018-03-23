@@ -6,7 +6,9 @@
 <hibernate-mapping package="edu.fullerton.csu.jmtran.projectx.model" default-cascade="none">
 
     <class name="MailboxMessage" table="MAILBOX_MESSAGES">
-        <id name="id" column="ID" type="long"/>
+        <id name="id" column="ID" type="long">
+            <generator class="native"/>
+        </id>
 
         <many-to-one name="userId" column="USER_ID" class="edu.fullerton.csu.jmtran.projectx.model.User" />
         <many-to-one name="messageId" column="MESSAGE_ID" class="edu.fullerton.csu.jmtran.projectx.model.Message" />

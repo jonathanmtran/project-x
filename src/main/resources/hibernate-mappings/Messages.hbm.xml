@@ -6,7 +6,9 @@
 <hibernate-mapping package="edu.fullerton.csu.jmtran.projectx.model" default-cascade="none">
 
     <class name="Message" table="MESSAGES">
-        <id name="id" column="ID" type="long"/>
+        <id name="id" column="ID" type="long">
+            <generator class="native"/>
+        </id>
 
         <property name="subject" type="text" column="SUBJECT"/>
         <property name="messageAbstract" type="text" column="MESSAGE_ABSTRACT"/>
