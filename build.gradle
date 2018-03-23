@@ -16,12 +16,12 @@ ext {
     angularJsWebJarVersion = '1.6.9'
     bootstrapWebJarVersion = '3.3.7-1'
     commonsDbcpVersion = '1.4'
-    hibernateVersion = '3.6.10.Final'
+    hibernateVersion = '4.2.19.Final'
     hsqldbVersion = '2.4.0'
     javassistVersion = '3.12.1.GA'
     javaMailVersion = '1.6.1'
     jstlVersion = '1.2'
-    springFrameworkVersion = '3.2.18.RELEASE'
+    springFrameworkVersion = '4.3.11.RELEASE'
     webjarsLocatorVersion = '0.30'
 }
 

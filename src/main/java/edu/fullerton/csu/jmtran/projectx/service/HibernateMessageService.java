@@ -2,8 +2,8 @@ package edu.fullerton.csu.jmtran.projectx.service;
 
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import org.hibernate.HibernateException;
-import org.springframework.orm.hibernate3.HibernateJdbcException;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class HibernateMessageService extends HibernateDaoSupport {
             result = (List<Message>) getHibernateTemplate().find("from Message");
         }
         catch (HibernateException e) {
-            throw convertHibernateAccessException(e);
+            throw e;
         }
 
         return result;
@@ -28,7 +28,7 @@ public class HibernateMessageService extends HibernateDaoSupport {
             result = (List<Message>) getHibernateTemplate().find("from Message where id = '" + id.toString() + "'");
         }
         catch (HibernateException e) {
-            throw convertHibernateAccessException(e);
+            throw e;
         }
 
         return result.get(0);
