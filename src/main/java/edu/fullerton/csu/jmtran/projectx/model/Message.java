@@ -1,6 +1,8 @@
 package edu.fullerton.csu.jmtran.projectx.model;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
     private long id;
     private String subject;
     private String messageAbstract;

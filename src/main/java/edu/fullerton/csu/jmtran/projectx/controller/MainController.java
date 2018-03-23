@@ -13,18 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class MainController {
 
-    @Autowired
-    @Qualifier("messageDao")
-    private MessageDao messageDao;
-
-    @Autowired
-    @Qualifier("mailboxDao")
-    private MailboxDao mailboxDao;
-
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView viewIndex() {
         ModelAndView view = new ModelAndView("index");
 
         return view;
     }
+
 }

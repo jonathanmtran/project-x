@@ -45,7 +45,13 @@
     </bean>
 
     <bean id="messageService" class="edu.fullerton.csu.jmtran.projectx.service.HibernateMessageService">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+
+    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MailboxController">
+        <property name="messageService" ref="messageService"/>
     </bean>
 
 </beans>
