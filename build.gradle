@@ -32,6 +32,7 @@ sourceSets {
 dependencies {
     // Database dependency
     hsqldbRuntime "org.hsqldb:hsqldb:${hsqldbVersion}"
+    runtime "org.hsqldb:hsqldb:${hsqldbVersion}"
 
     compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
     compile "javax.mail:javax.mail-api:${javaMailVersion}"
