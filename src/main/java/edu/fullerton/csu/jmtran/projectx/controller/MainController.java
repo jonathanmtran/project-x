@@ -25,8 +25,6 @@ public class MainController {
     public ModelAndView viewIndex() {
         ModelAndView view = new ModelAndView("index");
 
-        view.addObject("messages", this.mailboxDao.getMessages("123456789"));
-
         return view;
     }
 }
