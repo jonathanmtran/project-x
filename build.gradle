@@ -25,9 +25,13 @@ ext {
     webjarsLocatorVersion = '0.30'
 }
 
+sourceSets {
+    hsqldb
+}
+
 dependencies {
     // Database dependency
-    runtime "org.hsqldb:hsqldb:${hsqldbVersion}"
+    hsqldbRuntime "org.hsqldb:hsqldb:${hsqldbVersion}"
 
     compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
     compile "javax.mail:javax.mail-api:${javaMailVersion}"
@@ -46,4 +50,15 @@ dependencies {
 
 war {
     archiveName 'message-center.war'
+}
+
+task hsql(type: JavaExec) {
+    classpath = sourceSets.hsqldb.runtimeClasspath
+
+    main = 'org.hsqldb.server.Server'
+
+    args '-database.0'
+    args 'file:./.gradle/hsqldb/projectX'
+    args '--dbname.0'
+    args 'projectX'
 }
