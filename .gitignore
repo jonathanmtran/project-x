@@ -1,4 +1,4 @@
-overrides.properties
+**/overrides.properties
 
 # Compiled class file
 *.class
