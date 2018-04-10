@@ -10,9 +10,7 @@
                 <!-- Add messaging service beans here -->
                 <!-- <ref bean="emailService" /> -->
                 <ref bean="telegramService" />
-                <bean class="edu.fullerton.csu.jmtran.projectx.messaging.service.StdoutService">
-                    <property name="name" value="stdout" />
-                </bean>
+                <ref bean="stdoutService" />
             </list>
         </property>
     </bean>
@@ -32,6 +30,10 @@
         <property name="attributeKey" value="user.id" />
         <property name="baseUrl" value="https://api.telegram.org" />
         <property name="token" value="${telegram.token}" />
+    </bean>
+
+    <bean id="stdoutService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.StdoutService">
+        <property name="name" value="stdout" />
     </bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
