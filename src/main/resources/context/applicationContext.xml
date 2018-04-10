@@ -4,18 +4,40 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
+    <bean id="messageSendingService" class="edu.fullerton.csu.jmtran.projectx.service.MessageSendingService">
+        <property name="messagingServices">
+            <list>
+                <!-- Add messaging service beans here -->
+                <!-- <ref bean="emailService" /> -->
+                <ref bean="telegramService" />
+                <bean class="edu.fullerton.csu.jmtran.projectx.messaging.service.StdoutService">
+                    <property name="name" value="stdout" />
+                </bean>
+            </list>
+        </property>
     </bean>
 
-    <bean class="edu.fullerton.csu.jmtran.projectx.messaging.service.EmailService">
+    <bean id="emailService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.EmailService">
+        <property name="name" value="E-mail" />
+        <property name="attributeKey" value="emailAddress"/>
         <property name="mailSender">
             <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
                 <property name="host" value="smtp.example.com" />
             </bean>
         </property>
+    </bean>
+
+    <bean id="telegramService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.TelegramService">
+        <property name="name" value="Telegram" />
+        <property name="attributeKey" value="user.id" />
+        <property name="baseUrl" value="https://api.telegram.org" />
+        <property name="token" value="${telegram.token}" />
+    </bean>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
     </bean>
 
     <context:component-scan base-package="edu.fullerton.csu.jmtran.projectx" />
