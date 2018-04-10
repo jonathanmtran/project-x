@@ -7,10 +7,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
-    private String name = "E-mail";
 public class EmailService extends AbstractMessagingService {
-    private String attributeKey = this.getClass().getCanonicalName() + ".emailAddress";
-
     private MailSender mailSender;
 
     public MailSender getMailSender() {
@@ -23,6 +20,7 @@ public class EmailService extends AbstractMessagingService {
 
     @Override
     public boolean sendMessage(User recipient, Message message) {
+        @SuppressWarnings("unchecked")
         String emailAddress = (String) recipient.getAttributes().getOrDefault(this.attributeKey, "");
 
         if(emailAddress.isEmpty()) {
