@@ -20,5 +20,6 @@ public abstract class AbstractMessagingService implements IMessagingService {
     }
 
     public void setAttributeKey(String attributeKey) {
+        this.attributeKey = this.getClass().getSimpleName() + "." + attributeKey;
     }
 }
