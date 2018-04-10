@@ -7,8 +7,8 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
-public class EmailService implements MessagingService {
     private String name = "E-mail";
+public class EmailService extends AbstractMessagingService {
     private String attributeKey = this.getClass().getCanonicalName() + ".emailAddress";
 
     private MailSender mailSender;

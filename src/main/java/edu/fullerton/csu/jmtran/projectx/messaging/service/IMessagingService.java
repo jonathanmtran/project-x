@@ -3,6 +3,10 @@ package edu.fullerton.csu.jmtran.projectx.messaging.service;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
 
-public interface MessagingService {
+public interface IMessagingService {
+    public String getName();
+
+    public void setName(String name);
+
     public boolean sendMessage(User recipient, Message message);
 }

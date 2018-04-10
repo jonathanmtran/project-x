@@ -3,7 +3,7 @@ package edu.fullerton.csu.jmtran.projectx.messaging.service;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
 
-public class AbstractMessagingService implements MessagingService {
+public abstract class AbstractMessagingService implements IMessagingService {
     protected String name;
     protected String attributeKey;
 
@@ -20,11 +20,5 @@ public class AbstractMessagingService implements MessagingService {
     }
 
     public void setAttributeKey(String attributeKey) {
-        this.attributeKey = attributeKey;
-    }
-
-    @Override
-    public boolean sendMessage(User recipient, Message message) {
-        return false;
     }
 }
