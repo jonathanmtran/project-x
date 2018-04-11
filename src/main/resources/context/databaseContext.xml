@@ -42,6 +42,10 @@
         </property>
     </bean>
 
+    <bean class="edu.fullerton.csu.jmtran.projectx.dao.MessageDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
     <bean class="edu.fullerton.csu.jmtran.projectx.dao.UserDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
