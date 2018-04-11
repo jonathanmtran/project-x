@@ -1,5 +1,6 @@
 package edu.fullerton.csu.jmtran.projectx.controller;
 
+import edu.fullerton.csu.jmtran.projectx.model.MailboxMessage;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.service.HibernateMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,10 @@ public class MailboxController {
     private HibernateMessageService messageService;
 
     @RequestMapping(value = "/api/v0/mailbox")
-    public List<Message> getMessages(@RequestParam("userId") long userId) {
-        List<Message> messages = null;
+    public List<MailboxMessage> getMessages(@RequestParam("userId") long userId) {
+        List<MailboxMessage> messages = null;
 
-        messages = this.messageService.getAllMessages();
+        messages = this.messageService.getMailboxMessages(userId);
 
         return messages;
     }

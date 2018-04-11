@@ -26,6 +26,19 @@ public class HibernateMessageService extends HibernateDaoSupport {
         return result;
     }
 
+    public List<MailboxMessage> getMailboxMessages(Long id) {
+        List<MailboxMessage> result;
+
+        try {
+            result = (List<MailboxMessage>) getHibernateTemplate().find("from MailboxMessage where USER_ID = " + id.toString());
+        }
+        catch(HibernateException e) {
+            throw e;
+        }
+
+        return result;
+    }
+
     public Message getMessage(Long id) {
         List<Message> result = null;
 
