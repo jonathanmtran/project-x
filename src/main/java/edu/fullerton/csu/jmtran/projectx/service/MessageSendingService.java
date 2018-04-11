@@ -1,5 +1,6 @@
 package edu.fullerton.csu.jmtran.projectx.service;
 
+import edu.fullerton.csu.jmtran.projectx.messaging.service.DatabaseService;
 import edu.fullerton.csu.jmtran.projectx.messaging.service.IMessagingService;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
@@ -10,12 +11,24 @@ import java.util.List;
 public class MessageSendingService {
 
     @Autowired
+    private HibernateMessageService messageService;
+
+    @Autowired
     private List<IMessagingService> services;
 
     public void sendMessages(User recipient, Message message) {
         for(IMessagingService service : services) {
-            service.sendMessage(recipient, message);
+            boolean messageSent = service.sendMessage(recipient, message);
+
+            if(!messageSent) {
+                // Log a WARNing
+            }
+
+            this.messageService.sendMessage(recipient, message, service);
         }
+
+        this.messageService.sendMessage(recipient, message, new DatabaseService());
+
     }
 
     public List<IMessagingService> getMessagingServices() {

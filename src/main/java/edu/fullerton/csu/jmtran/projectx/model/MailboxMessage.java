@@ -1,12 +1,14 @@
 package edu.fullerton.csu.jmtran.projectx.model;
 
+import java.util.Date;
+
 public class MailboxMessage {
     private long id;
     private String userId;
     private String messageId;
     private String massMessagingId;
     private String messagingService;
-    private String receivedDate;
+    private Date receivedDate;
 
     public MailboxMessage() {
         // Do nothing
@@ -52,11 +54,11 @@ public class MailboxMessage {
         this.messagingService = messagingService;
     }
 
-    public String getReceivedDate() {
+    public Date getReceivedDate() {
         return receivedDate;
     }
 
-    public void setReceivedDate(String receivedDate) {
+    public void setReceivedDate(Date receivedDate) {
         this.receivedDate = receivedDate;
     }
 }
