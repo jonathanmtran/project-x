@@ -21,7 +21,7 @@ public class EmailService extends AbstractMessagingService {
     @Override
     public boolean sendMessage(User recipient, Message message) {
         @SuppressWarnings("unchecked")
-        String emailAddress = (String) recipient.getAttributes().getOrDefault(this.attributeKey, "");
+        String emailAddress = recipient.getAttribute(this.attributeKey);
 
         if(emailAddress.isEmpty()) {
             return false;

@@ -26,7 +26,8 @@ public class TelegramService extends AbstractMessagingService {
         RestTemplate restTemplate = new RestTemplate();
 
         SendMessage sendMessageRequest = new SendMessage();
-        sendMessageRequest.setChatId((String)recipient.getAttributes().get(this.getAttributeKey()));
+        sendMessageRequest.setChatId(recipient.getAttribute(attributeKey));
+
         sendMessageRequest.setText(message.getMessage());
 
         String requestUrl = urlTemplate.replace("{baseUrl}", this.getBaseUrl());

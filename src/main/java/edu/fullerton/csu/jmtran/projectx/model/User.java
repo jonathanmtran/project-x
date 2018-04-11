@@ -1,18 +1,13 @@
 package edu.fullerton.csu.jmtran.projectx.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import java.util.Map;
 import java.util.Set;
 
 public class User {
     private String id;
 
-    private Map attributes;
-
     @OneToMany(mappedBy = "userId")
-    private Set<UserAttribute> attribs;
+    private Set<UserAttribute> attributes;
 
     public User() {
         // Do nothing
@@ -30,19 +25,21 @@ public class User {
         this.id = id;
     }
 
-    public Map getAttributes() {
+    public Set<UserAttribute> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(Map attributes) {
+    public void setAttributes(Set<UserAttribute> attributes) {
         this.attributes = attributes;
     }
 
-    public Set<UserAttribute> getAttribs() {
-        return attribs;
-    }
+    public String getAttribute(String key) {
+        for(UserAttribute userAttribute : attributes) {
+            if(userAttribute.getKey().equals(key)) {
+                return userAttribute.getValue();
+            }
+        }
 
-    public void setAttribs(Set<UserAttribute> attribs) {
-        this.attribs = attribs;
+        return null;
     }
 }
