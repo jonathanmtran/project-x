@@ -11,7 +11,7 @@
         </id>
 
         <property name="userId" column="USER_ID" type="string" />
-        <property name="messageId" column="MESSAGE_ID" type="string" />
+        <property name="messageId" column="MESSAGE_ID" type="integer" />
         <property name="messagingService" column="MESSAGING_SERVICE" type="string" />
         <property name="massMessagingId" column="MASS_MESSAGING_ID" type="integer"/>
         <property name="receivedDate" column="RECEIVED_DATE" type="timestamp"/>
