@@ -19,7 +19,7 @@ ext {
     hibernateVersion = '4.2.19.Final'
     hsqldbVersion = '2.4.0'
     jacksonVersion = '2.9.4'
-    javassistVersion = '3.12.1.GA'
+    javassistVersion = '3.13.0-GA'
     javaMailVersion = '1.6.1'
     jstlVersion = '1.2'
     servletApiVersion = '3.0.1'
@@ -41,7 +41,7 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
     compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
-    compile "javax.mail:javax.mail-api:${javaMailVersion}"
+    runtime "javax.mail:javax.mail-api:${javaMailVersion}"
     compile "javax.servlet:jstl:${jstlVersion}"
     compile "javax.servlet:javax.servlet-api:${servletApiVersion}"
     compile "org.springframework:spring-context-support:${springFrameworkVersion}"
@@ -52,7 +52,7 @@ dependencies {
     compile "org.webjars:bootstrap:${bootstrapWebJarVersion}"
     compile "org.webjars:webjars-locator:${webjarsLocatorVersion}"
 
-    runtime "javassist:javassist:${javassistVersion}"
+    runtime "org.javassist:javassist:${javassistVersion}"
     compile "org.hibernate:hibernate-core:${hibernateVersion}"
 }
 
