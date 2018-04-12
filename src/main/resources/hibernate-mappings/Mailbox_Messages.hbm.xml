@@ -15,6 +15,8 @@
         <property name="messagingService" column="MESSAGING_SERVICE" type="string" />
         <property name="massMessagingId" column="MASS_MESSAGING_ID" type="integer"/>
         <property name="receivedDate" column="RECEIVED_DATE" type="timestamp"/>
+
+        <many-to-one name="message" class="Message" column="MESSAGE_ID" insert="false" update="false" lazy="false" />
     </class>
 
 </hibernate-mapping>
