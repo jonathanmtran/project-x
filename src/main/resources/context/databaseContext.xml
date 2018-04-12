@@ -36,22 +36,25 @@
         </property>
     </bean>
 
-    <bean id="messageService" class="edu.fullerton.csu.jmtran.projectx.service.HibernateMessageService">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory" />
-        </property>
+    <bean class="edu.fullerton.csu.jmtran.projectx.service.MessageSendingService">
+        <property name="mailboxDao" ref="mailboxDao" />
     </bean>
 
-    <bean class="edu.fullerton.csu.jmtran.projectx.dao.MessageDAOImpl">
+    <bean id="mailboxDao" class="edu.fullerton.csu.jmtran.projectx.dao.MailboxDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <bean class="edu.fullerton.csu.jmtran.projectx.dao.UserDAOImpl">
+    <bean id="messageDao" class="edu.fullerton.csu.jmtran.projectx.dao.MessageDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="userDao" class="edu.fullerton.csu.jmtran.projectx.dao.UserDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
     <bean class="edu.fullerton.csu.jmtran.projectx.controller.MailboxController">
-        <property name="messageService" ref="messageService"/>
+        <property name="mailboxDao" ref="mailboxDao"/>
+        <property name="messageDao" ref="messageDao"/>
     </bean>
 
 </beans>

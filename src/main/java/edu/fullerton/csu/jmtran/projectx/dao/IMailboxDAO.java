@@ -7,7 +7,7 @@ import edu.fullerton.csu.jmtran.projectx.model.User;
 
 import java.util.List;
 
-public interface IMailboxMessageDAO {
+public interface IMailboxDAO {
     public List<MailboxMessage> getMessages(String userId);
     public boolean sendMessage(User recipient, Message message, IMessagingService service);
 }

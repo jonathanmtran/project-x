@@ -10,6 +10,8 @@ public class MailboxMessage {
     private String messagingService;
     private Date receivedDate;
 
+    private Message message;
+
     public MailboxMessage() {
         // Do nothing
     }
@@ -60,5 +62,13 @@ public class MailboxMessage {
 
     public void setReceivedDate(Date receivedDate) {
         this.receivedDate = receivedDate;
+    }
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
     }
 }

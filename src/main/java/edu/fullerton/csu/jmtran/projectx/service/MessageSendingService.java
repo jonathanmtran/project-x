@@ -1,5 +1,6 @@
 package edu.fullerton.csu.jmtran.projectx.service;
 
+import edu.fullerton.csu.jmtran.projectx.dao.IMailboxDAO;
 import edu.fullerton.csu.jmtran.projectx.messaging.service.DatabaseService;
 import edu.fullerton.csu.jmtran.projectx.messaging.service.IMessagingService;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
@@ -11,7 +12,7 @@ import java.util.List;
 public class MessageSendingService {
 
     @Autowired
-    private HibernateMessageService messageService;
+    private IMailboxDAO mailboxDAO;
 
     @Autowired
     private List<IMessagingService> services;
@@ -24,11 +25,18 @@ public class MessageSendingService {
                 // Log a WARNing
             }
 
-            this.messageService.sendMessage(recipient, message, service);
+            this.mailboxDAO.sendMessage(recipient, message, service);
         }
 
-        this.messageService.sendMessage(recipient, message, new DatabaseService());
+        this.mailboxDAO.sendMessage(recipient, message, new DatabaseService());
+    }
 
+    public IMailboxDAO getMailboxDAO() {
+        return mailboxDAO;
+    }
+
+    public void setMailboxDAO(IMailboxDAO mailboxDAO) {
+        this.mailboxDAO = mailboxDAO;
     }
 
     public List<IMessagingService> getMessagingServices() {

@@ -1,8 +1,9 @@
 package edu.fullerton.csu.jmtran.projectx.controller;
 
+import edu.fullerton.csu.jmtran.projectx.dao.IMailboxDAO;
+import edu.fullerton.csu.jmtran.projectx.dao.IMessageDAO;
 import edu.fullerton.csu.jmtran.projectx.model.MailboxMessage;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
-import edu.fullerton.csu.jmtran.projectx.service.HibernateMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,28 +16,22 @@ import java.util.List;
 public class MailboxController {
 
     @Autowired
-    private HibernateMessageService messageService;
+    private IMailboxDAO mailboxDao;
+
+    @Autowired
+    private IMessageDAO messageDao;
 
     @RequestMapping(value = "/api/v0/mailbox")
     public List<MailboxMessage> getMessages(@RequestParam("userId") long userId) {
         List<MailboxMessage> messages = null;
 
-        messages = this.messageService.getMailboxMessages(userId);
+        messages = this.mailboxDao.getMessages(userId + "");
 
         return messages;
     }
 
     @RequestMapping(value = "/api/v0/mailbox/message/{messageId}")
     public Message getMessage(@PathVariable("messageId") long messageId) {
-        return this.messageService.getMessage(messageId);
+        return this.messageDao.get(messageId);
     }
-
-    public HibernateMessageService getMessageService() {
-        return messageService;
-    }
-
-    public void setMessageService(HibernateMessageService messageService) {
-        this.messageService = messageService;
-    }
-
 }
