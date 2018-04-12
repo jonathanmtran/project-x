@@ -17,6 +17,7 @@ public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
     private MessageDAOImpl messageDao;
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<MailboxMessage> getMessages(String userId) {
         Session session = this.sessionFactory.openSession();
 

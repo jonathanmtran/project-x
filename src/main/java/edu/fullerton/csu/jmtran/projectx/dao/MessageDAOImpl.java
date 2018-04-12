@@ -24,6 +24,7 @@ public class MessageDAOImpl implements IMessageDAO {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Message> list() {
         Session session = this.sessionFactory.openSession();
 

@@ -24,6 +24,7 @@ public class UserDAOImpl implements IUserDAO {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<User> list() {
         Session session = this.sessionFactory.openSession();
 
