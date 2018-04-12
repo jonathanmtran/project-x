@@ -7,11 +7,15 @@ import edu.fullerton.csu.jmtran.projectx.model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 import java.util.List;
 
 public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
+    @Autowired
+    private MessageDAOImpl messageDao;
+
     @Override
     public List<MailboxMessage> getMessages(String userId) {
         Session session = this.sessionFactory.openSession();
@@ -46,5 +50,13 @@ public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
         session.close();
 
         return true;
+    }
+
+    public MessageDAOImpl getMessageDao() {
+        return messageDao;
+    }
+
+    public void setMessageDao(MessageDAOImpl messageDao) {
+        this.messageDao = messageDao;
     }
 }

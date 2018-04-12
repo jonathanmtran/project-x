@@ -38,6 +38,7 @@
 
     <bean id="mailboxDao" class="edu.fullerton.csu.jmtran.projectx.dao.MailboxDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
+        <property name="messageDao" ref="messageDao" />
     </bean>
 
     <bean id="messageDao" class="edu.fullerton.csu.jmtran.projectx.dao.MessageDAOImpl">
