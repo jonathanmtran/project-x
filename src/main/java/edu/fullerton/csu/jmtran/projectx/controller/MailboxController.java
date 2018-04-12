@@ -34,4 +34,20 @@ public class MailboxController {
     public Message getMessage(@PathVariable("messageId") long messageId) {
         return this.messageDao.get(messageId);
     }
+
+    public IMailboxDAO getMailboxDao() {
+        return mailboxDao;
+    }
+
+    public void setMailboxDao(IMailboxDAO mailboxDao) {
+        this.mailboxDao = mailboxDao;
+    }
+
+    public IMessageDAO getMessageDao() {
+        return messageDao;
+    }
+
+    public void setMessageDao(IMessageDAO messageDao) {
+        this.messageDao = messageDao;
+    }
 }

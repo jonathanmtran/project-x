@@ -16,6 +16,7 @@
     </bean>
 
     <bean id="messageSendingService" class="edu.fullerton.csu.jmtran.projectx.service.MessageSendingService">
+        <property name="mailboxDao" ref="mailboxDao" />
         <property name="messagingServices">
             <list>
                 <!-- Add messaging service beans here -->
@@ -31,7 +32,17 @@
         <property name="attributeKey" value="emailAddress"/>
         <property name="mailSender">
             <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-                <property name="host" value="smtp.example.com" />
+                <property name="protocol" value="smtp" />
+                <property name="host" value="${smtp.host}" />
+                <property name="port" value="${smtp.port}" />
+                <property name="username" value="${smtp.username}" />
+                <property name="password" value="${smtp.password}" />
+                <property name="javaMailProperties">
+                    <props>
+                        <prop key="mail.smtp.auth">true</prop>
+                        <prop key="mail.smtp.starttls.enable">true</prop>
+                    </props>
+                </property>
             </bean>
         </property>
     </bean>
@@ -45,6 +56,11 @@
 
     <bean id="stdoutService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.StdoutService">
         <property name="name" value="stdout" />
+    </bean>
+
+    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MailboxController">
+        <property name="mailboxDao" ref="mailboxDao"/>
+        <property name="messageDao" ref="messageDao"/>
     </bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

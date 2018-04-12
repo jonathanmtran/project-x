@@ -36,10 +36,6 @@
         </property>
     </bean>
 
-    <bean class="edu.fullerton.csu.jmtran.projectx.service.MessageSendingService">
-        <property name="mailboxDao" ref="mailboxDao" />
-    </bean>
-
     <bean id="mailboxDao" class="edu.fullerton.csu.jmtran.projectx.dao.MailboxDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
@@ -50,11 +46,6 @@
 
     <bean id="userDao" class="edu.fullerton.csu.jmtran.projectx.dao.UserDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-
-    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MailboxController">
-        <property name="mailboxDao" ref="mailboxDao"/>
-        <property name="messageDao" ref="messageDao"/>
     </bean>
 
 </beans>

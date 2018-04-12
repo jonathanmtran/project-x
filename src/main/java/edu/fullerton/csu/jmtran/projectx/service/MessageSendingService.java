@@ -12,7 +12,7 @@ import java.util.List;
 public class MessageSendingService {
 
     @Autowired
-    private IMailboxDAO mailboxDAO;
+    private IMailboxDAO mailboxDao;
 
     @Autowired
     private List<IMessagingService> services;
@@ -25,18 +25,18 @@ public class MessageSendingService {
                 // Log a WARNing
             }
 
-            this.mailboxDAO.sendMessage(recipient, message, service);
+            this.mailboxDao.sendMessage(recipient, message, service);
         }
 
-        this.mailboxDAO.sendMessage(recipient, message, new DatabaseService());
+        this.mailboxDao.sendMessage(recipient, message, new DatabaseService());
     }
 
-    public IMailboxDAO getMailboxDAO() {
-        return mailboxDAO;
+    public IMailboxDAO getMailboxDao() {
+        return mailboxDao;
     }
 
-    public void setMailboxDAO(IMailboxDAO mailboxDAO) {
-        this.mailboxDAO = mailboxDAO;
+    public void setMailboxDao(IMailboxDAO mailboxDao) {
+        this.mailboxDao = mailboxDao;
     }
 
     public List<IMessagingService> getMessagingServices() {

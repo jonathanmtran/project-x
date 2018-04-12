@@ -36,6 +36,7 @@ public class EmailService extends AbstractMessagingService {
             this.mailSender.send(email);
         }
         catch(MailException mailException) {
+            System.err.println(mailException.getMessage());
             return false;
         }
 
