@@ -27,8 +27,7 @@ public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
         MailboxMessage mailboxMessage = new MailboxMessage();
 
         mailboxMessage.setUserId(recipient.getId());
-        // TODO: Do something about this (long + "" cast) business
-        mailboxMessage.setMessageId(message.getId() + "");
+        mailboxMessage.setMessageId(message.getId());
 
         if(service.getName() != null) {
             mailboxMessage.setMessagingService(service.getName());

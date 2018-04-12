@@ -6,14 +6,14 @@
 <hibernate-mapping package="edu.fullerton.csu.jmtran.projectx.model" default-cascade="none">
 
     <class name="MailboxMessage" table="MAILBOX_MESSAGES">
-        <id name="id" column="ID" type="long">
+        <id name="id" column="ID" type="integer">
             <generator class="identity"/>
         </id>
 
         <property name="userId" column="USER_ID" type="string" />
         <property name="messageId" column="MESSAGE_ID" type="string" />
-        <property name="massMessagingId" column="MASS_MESSAGING_ID" type="long" />
         <property name="messagingService" column="MESSAGING_SERVICE" type="string" />
+        <property name="massMessagingId" column="MASS_MESSAGING_ID" type="integer"/>
         <property name="receivedDate" column="RECEIVED_DATE" type="timestamp"/>
     </class>
 

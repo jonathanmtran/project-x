@@ -3,9 +3,9 @@ package edu.fullerton.csu.jmtran.projectx.model;
 import java.util.Date;
 
 public class MailboxMessage {
-    private long id;
+    private int id;
     private String userId;
-    private String messageId;
+    private int messageId;
     private String massMessagingId;
     private String messagingService;
     private Date receivedDate;
@@ -20,7 +20,7 @@ public class MailboxMessage {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -32,11 +32,11 @@ public class MailboxMessage {
         this.userId = userId;
     }
 
-    public String getMessageId() {
+    public int getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(String messageId) {
+    public void setMessageId(int messageId) {
         this.messageId = messageId;
     }
 

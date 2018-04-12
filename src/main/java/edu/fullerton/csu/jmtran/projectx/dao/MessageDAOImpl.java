@@ -12,7 +12,7 @@ public class MessageDAOImpl implements IMessageDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public Message get(Long id) {
+    public Message get(int id) {
         Session session = this.sessionFactory.openSession();
 
         Query query = session.createQuery("from Message where id = :id");

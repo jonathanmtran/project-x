@@ -3,7 +3,7 @@ package edu.fullerton.csu.jmtran.projectx.model;
 import java.io.Serializable;
 
 public class Message implements Serializable {
-    private long id;
+    private int id;
     private String subject;
     private String messageAbstract;
     private String message;
@@ -12,17 +12,17 @@ public class Message implements Serializable {
         // Do nothing
     }
 
-    public Message(long id, String subject, String message) {
+    public Message(int id, String subject, String message) {
         this.id = id;
         this.subject = subject;
         this.message = message;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

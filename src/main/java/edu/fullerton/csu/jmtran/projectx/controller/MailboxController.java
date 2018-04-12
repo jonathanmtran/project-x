@@ -31,7 +31,7 @@ public class MailboxController {
     }
 
     @RequestMapping(value = "/api/v0/mailbox/message/{messageId}")
-    public Message getMessage(@PathVariable("messageId") long messageId) {
+    public Message getMessage(@PathVariable("messageId") int messageId) {
         return this.messageDao.get(messageId);
     }
 
