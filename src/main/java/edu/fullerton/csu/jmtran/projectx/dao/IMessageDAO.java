@@ -8,5 +8,5 @@ public interface IMessageDAO {
 
     public List<Message> list();
 
-    public void save(Message message);
+    public Message save(Message message);
 }

@@ -33,7 +33,7 @@ public class MessageDAOImpl implements IMessageDAO {
     }
 
     @Override
-    public void save(Message message) {
+    public Message save(Message message) {
         Session session = this.sessionFactory.openSession();
 
         Transaction tx = session.beginTransaction();
@@ -43,6 +43,8 @@ public class MessageDAOImpl implements IMessageDAO {
         tx.commit();
 
         session.close();
+
+        return message;
     }
 
     public SessionFactory getSessionFactory() {
