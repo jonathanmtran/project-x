@@ -21,10 +21,10 @@ public class MailboxController {
     private IMessageDAO messageDao;
 
     @RequestMapping(value = "/api/v0/mailbox")
-    public List<MailboxMessage> getMessages(@RequestParam("userId") long userId) {
+    public List<MailboxMessage> getMessages(@RequestParam("userId") String userId) {
         List<MailboxMessage> messages = null;
 
-        messages = this.mailboxDao.getMessages(userId + "");
+        messages = this.mailboxDao.getMessages(userId);
 
         return messages;
     }
