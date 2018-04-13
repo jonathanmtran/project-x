@@ -10,8 +10,8 @@ public class MessageController {
     @Autowired
     private IMessageDAO messageDao;
 
-    @RequestMapping(value = "/api/v0/message")
-    public Message getMessage(@RequestParam("messageId") int messageId) {
+    @RequestMapping(value = "/api/v0/message/{messageId}")
+    public Message getMessage(@PathVariable("messageId") int messageId) {
         return this.messageDao.get(messageId);
     }
 
