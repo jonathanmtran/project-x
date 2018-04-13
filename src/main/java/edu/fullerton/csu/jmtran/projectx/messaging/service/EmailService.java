@@ -1,7 +1,6 @@
 package edu.fullerton.csu.jmtran.projectx.messaging.service;
 
 import edu.fullerton.csu.jmtran.projectx.model.Message;
-
 import edu.fullerton.csu.jmtran.projectx.model.User;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
@@ -23,7 +22,7 @@ public class EmailService extends AbstractMessagingService {
         @SuppressWarnings("unchecked")
         String emailAddress = recipient.getAttribute(this.attributeKey);
 
-        if(emailAddress.isEmpty()) {
+        if (emailAddress.isEmpty()) {
             return false;
         }
 
@@ -34,8 +33,7 @@ public class EmailService extends AbstractMessagingService {
 
         try {
             this.mailSender.send(email);
-        }
-        catch(MailException mailException) {
+        } catch (MailException mailException) {
             System.err.println(mailException.getMessage());
             return false;
         }

@@ -1,12 +1,11 @@
 package edu.fullerton.csu.jmtran.projectx.dao;
 
 import edu.fullerton.csu.jmtran.projectx.model.Message;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import java.util.List;
 
 public class MessageDAOImpl implements IMessageDAO {
     private SessionFactory sessionFactory;
@@ -18,7 +17,7 @@ public class MessageDAOImpl implements IMessageDAO {
         Query query = session.createQuery("from Message where id = :id");
         query.setParameter("id", id);
 
-        Message message = (Message)query.uniqueResult();
+        Message message = (Message) query.uniqueResult();
 
         return message;
     }

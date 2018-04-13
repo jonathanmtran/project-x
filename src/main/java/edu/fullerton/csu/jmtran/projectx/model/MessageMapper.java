@@ -1,9 +1,8 @@
 package edu.fullerton.csu.jmtran.projectx.model;
 
-import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.springframework.jdbc.core.RowMapper;
 
 public final class MessageMapper implements RowMapper<Message> {
     @Override

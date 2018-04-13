@@ -1,12 +1,11 @@
 package edu.fullerton.csu.jmtran.projectx.dao;
 
 import edu.fullerton.csu.jmtran.projectx.model.User;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import java.util.List;
 
 public class UserDAOImpl implements IUserDAO {
     private SessionFactory sessionFactory;
@@ -18,7 +17,7 @@ public class UserDAOImpl implements IUserDAO {
         Query query = session.createQuery("from User where user_id = :userId");
         query.setParameter("userId", userId);
 
-        User user = (User)query.uniqueResult();
+        User user = (User) query.uniqueResult();
 
         return user;
     }

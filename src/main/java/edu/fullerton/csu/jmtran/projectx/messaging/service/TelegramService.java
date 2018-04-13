@@ -7,13 +7,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
+import java.io.IOException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
 
 public class TelegramService extends AbstractMessagingService {
     private String baseUrl;
@@ -39,8 +38,7 @@ public class TelegramService extends AbstractMessagingService {
 
         try {
             requestJson = mapper.writeValueAsString(sendMessageRequest);
-        }
-        catch(JsonProcessingException jpe) {
+        } catch (JsonProcessingException jpe) {
             return false;
         }
 
@@ -49,9 +47,10 @@ public class TelegramService extends AbstractMessagingService {
 
         ResponseEntity<String> response;
         try {
-            response = restTemplate.postForEntity(requestUrl, new HttpEntity<>(requestJson, headers), String.class);
-        }
-        catch(org.springframework.web.client.ResourceAccessException rae) {
+            response =
+                    restTemplate.postForEntity(
+                            requestUrl, new HttpEntity<>(requestJson, headers), String.class);
+        } catch (org.springframework.web.client.ResourceAccessException rae) {
             return false;
         }
 
@@ -59,8 +58,7 @@ public class TelegramService extends AbstractMessagingService {
 
         try {
             root = mapper.readTree(response.getBody());
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             return response.getStatusCode().is2xxSuccessful();
         }
 

@@ -1,7 +1,7 @@
 package edu.fullerton.csu.jmtran.projectx.model;
 
-import javax.persistence.OneToMany;
 import java.util.Set;
+import javax.persistence.OneToMany;
 
 public class User {
     private String id;
@@ -34,8 +34,8 @@ public class User {
     }
 
     public String getAttribute(String key) {
-        for(UserAttribute userAttribute : attributes) {
-            if(userAttribute.getKey().equals(key)) {
+        for (UserAttribute userAttribute : attributes) {
+            if (userAttribute.getKey().equals(key)) {
                 return userAttribute.getValue();
             }
         }

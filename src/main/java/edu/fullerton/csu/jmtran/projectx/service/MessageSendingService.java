@@ -5,9 +5,8 @@ import edu.fullerton.csu.jmtran.projectx.messaging.service.DatabaseService;
 import edu.fullerton.csu.jmtran.projectx.messaging.service.IMessagingService;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MessageSendingService {
 
@@ -18,10 +17,10 @@ public class MessageSendingService {
     private List<IMessagingService> services;
 
     public void sendMessages(User recipient, Message message) {
-        for(IMessagingService service : services) {
+        for (IMessagingService service : services) {
             boolean messageSent = service.sendMessage(recipient, message);
 
-            if(!messageSent) {
+            if (!messageSent) {
                 // Log a WARNing
             }
 

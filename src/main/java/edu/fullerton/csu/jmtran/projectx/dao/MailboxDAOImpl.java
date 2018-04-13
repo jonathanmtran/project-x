@@ -4,13 +4,12 @@ import edu.fullerton.csu.jmtran.projectx.messaging.service.IMessagingService;
 import edu.fullerton.csu.jmtran.projectx.model.MailboxMessage;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
+import java.util.Date;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Date;
-import java.util.List;
 
 public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
     @Autowired
@@ -34,7 +33,7 @@ public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
         mailboxMessage.setUserId(recipient.getId());
         mailboxMessage.setMessageId(message.getId());
 
-        if(service.getName() != null) {
+        if (service.getName() != null) {
             mailboxMessage.setMessagingService(service.getName());
         }
 

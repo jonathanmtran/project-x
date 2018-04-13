@@ -4,13 +4,12 @@ import edu.fullerton.csu.jmtran.projectx.dao.IMailboxDAO;
 import edu.fullerton.csu.jmtran.projectx.dao.IMessageDAO;
 import edu.fullerton.csu.jmtran.projectx.model.MailboxMessage;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class MailboxController {

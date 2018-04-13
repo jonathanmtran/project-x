@@ -1,7 +1,5 @@
 package edu.fullerton.csu.jmtran.projectx.messaging.service;
 
-import edu.fullerton.csu.jmtran.projectx.model.Message;
-import edu.fullerton.csu.jmtran.projectx.model.User;
 
 public abstract class AbstractMessagingService implements IMessagingService {
     protected String name;
