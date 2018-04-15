@@ -1,5 +1,6 @@
 package edu.fullerton.csu.jmtran.projectx.messaging.service;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
 import org.springframework.mail.MailException;
@@ -7,6 +8,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
 public class EmailService extends AbstractMessagingService {
+    @JsonIgnore
     private MailSender mailSender;
 
     public MailSender getMailSender() {

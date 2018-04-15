@@ -24,7 +24,7 @@
 
     <util:list id="messagingServices">
         <!-- Add messaging service beans here -->
-        <!-- <ref bean="emailService" /> -->
+        <ref bean="emailService" />
         <ref bean="telegramService" />
         <ref bean="stdoutService" />
     </util:list>
@@ -51,7 +51,6 @@
     </bean>
 
     <bean id="telegramService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.TelegramService">
-        <property name="systemName" value="telegram" />
         <property name="name" value="Telegram" />
         <property name="attributeKey" value="user.id" />
         <property name="baseUrl" value="https://api.telegram.org" />
@@ -59,7 +58,6 @@
     </bean>
 
     <bean id="stdoutService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.StdoutService">
-        <property name="systemName" value="stdout" />
         <property name="name" value="stdout" />
     </bean>
 

@@ -6,8 +6,12 @@ public abstract class AbstractMessagingService implements IMessagingService {
     protected String name;
     protected String attributeKey;
 
+    /**
+     * If the messaging service systemName isn't explicitly set in applicationContext.xml,
+     * the name will be lower-cased and returned.
+     */
     public String getSystemName() {
-        return systemName;
+        return systemName != null ? systemName : name.toLowerCase();
     }
 
     public void setSystemName(String systemName) {
