@@ -1,0 +1,10 @@
+<div class="panel panel-default" ng-repeat="mailboxMessage in $ctrl.mailboxMessages">
+    <div class="panel-heading">{{mailboxMessage.message.subject}}</div>
+    <div class="panel-body">
+        <p ng-if="mailboxMessage.message.messageAbstract !== undefined"><strong>Abstract</strong> {{mailboxMessage.message.messageAbstract}}</p>
+        <p>{{mailboxMessage.message.message}}</p>
+    </div>
+    <div class="panel-footer">
+        <span class="glyphicon glyphicon-time" aria-label="Sent"></span> {{mailboxMessage.receivedDate | date:'medium'}}
+    </div>
+</div>
