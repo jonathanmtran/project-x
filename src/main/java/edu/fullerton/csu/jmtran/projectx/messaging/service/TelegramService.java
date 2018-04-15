@@ -1,5 +1,6 @@
 package edu.fullerton.csu.jmtran.projectx.messaging.service;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -15,7 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class TelegramService extends AbstractMessagingService {
+    @JsonIgnore
     private String baseUrl;
+    @JsonIgnore
     private String token;
 
     private String urlTemplate = "{baseUrl}/bot{token}/sendMessage";

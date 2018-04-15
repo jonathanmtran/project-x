@@ -1,7 +1,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -17,15 +19,15 @@
 
     <bean id="messageSendingService" class="edu.fullerton.csu.jmtran.projectx.service.MessageSendingService">
         <property name="mailboxDao" ref="mailboxDao" />
-        <property name="messagingServices">
-            <list>
-                <!-- Add messaging service beans here -->
-                <!-- <ref bean="emailService" /> -->
-                <ref bean="telegramService" />
-                <ref bean="stdoutService" />
-            </list>
-        </property>
+        <property name="messagingServices" ref="messagingServices" />
     </bean>
+
+    <util:list id="messagingServices">
+        <!-- Add messaging service beans here -->
+        <!-- <ref bean="emailService" /> -->
+        <ref bean="telegramService" />
+        <ref bean="stdoutService" />
+    </util:list>
 
     <bean id="emailService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.EmailService">
         <property name="systemName" value="email" />
@@ -60,22 +62,5 @@
         <property name="systemName" value="stdout" />
         <property name="name" value="stdout" />
     </bean>
-
-    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MailboxController">
-        <property name="mailboxDao" ref="mailboxDao"/>
-        <property name="messageDao" ref="messageDao"/>
-    </bean>
-
-    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MessageController">
-        <property name="messageDao" ref="messageDao"/>
-    </bean>
-
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
-    </bean>
-
-    <context:component-scan base-package="edu.fullerton.csu.jmtran.projectx" />
 
 </beans>
