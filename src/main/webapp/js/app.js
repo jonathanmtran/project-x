@@ -1,7 +1,38 @@
-var messageCenterApp = angular.module('messageCenterApp', []);
+var messageCenterApp = angular.module('messageCenterApp', [
+    'ngRoute',
+    'messageModule',
+]);
 
+var userId = '';
 
-messageCenterApp.controller("CreateMessageController", function($scope, $http) {
+messageCenterApp.config([
+    '$locationProvider',
+    '$routeProvider',
+    function config($locationProvider, $routeProvider) {
+        $locationProvider.hashPrefix('!');
+
+        $routeProvider.
+        when('/', {
+            templateUrl: 'js/mailbox/list.template.html',
+        }).
+        when('/mailbox', {
+            templateUrl: 'js/mailbox/list.template.html',
+        }).
+        when('/create-message', {
+            templateUrl: 'js/message/create.template.html',
+        }).
+        when('/404', {
+            template: 'oops',
+        }).
+        otherwise('/404');
+    }
+]);
+
+var messageModule = angular.module('messageModule', [
+    'ngRoute'
+]);
+
+messageModule.controller("CreateMessageController", ['$scope', '$http', function ($scope, $http) {
     $scope.success = false;
 
     $scope.formData = {};
@@ -20,4 +51,5 @@ messageCenterApp.controller("CreateMessageController", function($scope, $http) {
             $scope.formData = {};
         });
     };
-});
+}]
+);

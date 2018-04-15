@@ -14,13 +14,10 @@
     body {
       padding-top: 50px;
     }
-    .starter-template {
-      padding: 40px 15px;
-      text-align: center;
-    }
     </style>
 
     <script src="webjars/angularjs/1.6.9/angular.min.js"></script>
+    <script src="webjars/angularjs/1.6.9/angular-route.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/mailbox-messages-list/mailbox-messages-list.component.js"></script>
 </head>
@@ -38,9 +35,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#mailbox">Home</a></li>
-                <li><a href="#create-message">Create message</a></li>
-                <li><a href="#send">Send Message</a></li>
+                <li class="active"><a href="#!mailbox">Home</a></li>
+                <li><a href="#!create-message">Create message</a></li>
+                <li><a href="#!send">Send Message</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -48,46 +45,7 @@
 
 <div class="container">
 
-    <div class="starter-template">
-        <h1>Message Center</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-    </div>
-
-    <h1 id="mailbox">Your Messages</h1>
-    <mailbox-messages-list></mailbox-messages-list>
-
-    <h1 id="create-message">Create Message</h1>
-    <div ng-controller="CreateMessageController">
-        <div class="alert alert-success" role="alert" role="alert" ng-if="success">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Well done!</strong> The message was created.
-        </div>
-
-        <form class="form-horizontal" ng-submit="createMessage()">
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Subject</label>
-                <div class="col-sm-10">
-                    <input type="text" name="subject" class="form-control" ng-model="formData.subject" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Abstract</label>
-                <div class="col-sm-10">
-                    <input type="text" name="abstract" class="form-control" ng-model="formData.messageAbstract" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Message</label>
-                <div class="col-sm-10">
-                    <textarea name="message" class="form-control" ng-model="formData.message"></textarea>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-    </div>
+    <div ng-view></div>
 
 </div><!-- /.container -->
 
