@@ -16,7 +16,7 @@ public class MailboxMessage {
         // Do nothing
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
