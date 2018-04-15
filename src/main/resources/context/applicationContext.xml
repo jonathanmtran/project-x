@@ -1,10 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -15,11 +13,6 @@
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true" />
-    </bean>
-
-    <bean id="messageSendingService" class="edu.fullerton.csu.jmtran.projectx.service.MessageSendingService">
-        <property name="mailboxDao" ref="mailboxDao" />
-        <property name="messagingServices" ref="messagingServices" />
     </bean>
 
     <util:list id="messagingServices">
@@ -59,6 +52,13 @@
 
     <bean id="stdoutService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.StdoutService">
         <property name="name" value="stdout" />
+    </bean>
+
+    <bean id="messageSendingService" class="edu.fullerton.csu.jmtran.projectx.service.MessageSendingService">
+        <property name="mailboxDao" ref="mailboxDao" />
+        <property name="messageDao" ref="messageDao" />
+        <property name="messagingServices" ref="messagingServices" />
+        <property name="userDao" ref="userDao" />
     </bean>
 
 </beans>

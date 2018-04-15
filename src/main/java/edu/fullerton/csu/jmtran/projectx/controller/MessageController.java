@@ -5,6 +5,8 @@ import edu.fullerton.csu.jmtran.projectx.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class MessageController {
     @Autowired
@@ -13,6 +15,11 @@ public class MessageController {
     @RequestMapping(value = "/api/v0/message/{messageId}")
     public Message getMessage(@PathVariable("messageId") int messageId) {
         return this.messageDao.get(messageId);
+    }
+
+    @RequestMapping(value = "/api/v0/messages")
+    public List<Message> getMessages() {
+        return this.messageDao.list();
     }
 
     @RequestMapping(value = "/api/v0/message", method = RequestMethod.POST)

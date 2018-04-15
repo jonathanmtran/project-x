@@ -29,6 +29,8 @@ public class MessageDAOImpl implements IMessageDAO {
 
         List<Message> messages = session.createQuery("from Message").list();
 
+        session.close();
+
         return messages;
     }
 

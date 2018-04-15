@@ -4,12 +4,13 @@ import edu.fullerton.csu.jmtran.projectx.dao.IMailboxDAO;
 import edu.fullerton.csu.jmtran.projectx.dao.IMessageDAO;
 import edu.fullerton.csu.jmtran.projectx.model.MailboxMessage;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
+
 import java.util.List;
+
+import edu.fullerton.csu.jmtran.projectx.model.SendMessageRequest;
+import edu.fullerton.csu.jmtran.projectx.service.MessageSendingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MailboxController {
@@ -19,6 +20,9 @@ public class MailboxController {
 
     @Autowired
     private IMessageDAO messageDao;
+
+    @Autowired
+    private MessageSendingService messageSendingService;
 
     @RequestMapping(value = "/api/v0/mailbox")
     public List<MailboxMessage> getMessages(@RequestParam("userId") String userId) {
@@ -32,6 +36,11 @@ public class MailboxController {
     @RequestMapping(value = "/api/v0/mailbox/message/{messageId}")
     public Message getMessage(@PathVariable("messageId") int messageId) {
         return this.messageDao.get(messageId);
+    }
+
+    @RequestMapping(value = "/api/v0/mailbox/send", method = RequestMethod.POST)
+    public void sendMessages(@RequestBody SendMessageRequest request) {
+        this.messageSendingService.sendMessages(null, request.getMessageId(), request.getServices());
     }
 
     public IMailboxDAO getMailboxDao() {

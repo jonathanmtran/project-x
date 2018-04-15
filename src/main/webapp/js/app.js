@@ -21,6 +21,9 @@ app.config([
         when('/create-message', {
             templateUrl: 'js/message/create.template.html',
         }).
+        when('/send', {
+            templateUrl: 'js/message/send.template.html',
+        }).
         when('/404', {
             template: 'oops',
         }).
