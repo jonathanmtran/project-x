@@ -8,7 +8,7 @@
     <class name="User" table="USERS">
         <id name="id" column="USER_ID" type="string"/>
 
-        <set name="attributes" table="USER_ATTRIBUTES">
+        <set name="attributes" table="USER_ATTRIBUTES" lazy="false">
             <key column="USER_ID"/>
             <one-to-many class="UserAttribute" />
         </set>
