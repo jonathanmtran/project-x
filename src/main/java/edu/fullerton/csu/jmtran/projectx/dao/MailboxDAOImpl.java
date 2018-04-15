@@ -23,7 +23,11 @@ public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
         Query query = session.createQuery("FROM MailboxMessage WHERE USER_ID = :user_id");
         query.setParameter("user_id", userId);
 
-        return query.list();
+        List<MailboxMessage> messages = query.list();
+
+        session.close();
+
+        return messages;
     }
 
     @Override
