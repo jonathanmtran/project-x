@@ -28,6 +28,7 @@
     </bean>
 
     <bean id="emailService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.EmailService">
+        <property name="systemName" value="email" />
         <property name="name" value="E-mail" />
         <property name="attributeKey" value="emailAddress"/>
         <property name="mailSender">
@@ -48,6 +49,7 @@
     </bean>
 
     <bean id="telegramService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.TelegramService">
+        <property name="systemName" value="telegram" />
         <property name="name" value="Telegram" />
         <property name="attributeKey" value="user.id" />
         <property name="baseUrl" value="https://api.telegram.org" />
@@ -55,6 +57,7 @@
     </bean>
 
     <bean id="stdoutService" class="edu.fullerton.csu.jmtran.projectx.messaging.service.StdoutService">
+        <property name="systemName" value="stdout" />
         <property name="name" value="stdout" />
     </bean>
 

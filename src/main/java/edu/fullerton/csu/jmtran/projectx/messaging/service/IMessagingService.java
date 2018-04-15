@@ -8,5 +8,9 @@ public interface IMessagingService {
 
     public void setName(String name);
 
+    public String getSystemName();
+
+    public void setSystemName(String systemName);
+
     public boolean sendMessage(User recipient, Message message);
 }

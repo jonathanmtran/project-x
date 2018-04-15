@@ -2,8 +2,17 @@ package edu.fullerton.csu.jmtran.projectx.messaging.service;
 
 
 public abstract class AbstractMessagingService implements IMessagingService {
+    protected String systemName;
     protected String name;
     protected String attributeKey;
+
+    public String getSystemName() {
+        return systemName;
+    }
+
+    public void setSystemName(String systemName) {
+        this.systemName = systemName;
+    }
 
     public String getName() {
         return this.name;
