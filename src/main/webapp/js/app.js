@@ -1,11 +1,11 @@
-var messageCenterApp = angular.module('messageCenterApp', [
+var app = angular.module('messageCenterApp', [
     'ngRoute',
     'messageModule',
 ]);
 
 var userId = '';
 
-messageCenterApp.config([
+app.config([
     '$locationProvider',
     '$routeProvider',
     function config($locationProvider, $routeProvider) {
@@ -27,29 +27,3 @@ messageCenterApp.config([
         otherwise('/404');
     }
 ]);
-
-var messageModule = angular.module('messageModule', [
-    'ngRoute'
-]);
-
-messageModule.controller("CreateMessageController", ['$scope', '$http', function ($scope, $http) {
-    $scope.success = false;
-
-    $scope.formData = {};
-
-    $scope.createMessage = function() {
-        $http({
-            method: 'POST',
-            url: 'api/v0/message',
-            data: JSON.stringify($scope.formData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function successCallback(response) {
-            $scope.success = true;
-
-            $scope.formData = {};
-        });
-    };
-}]
-);

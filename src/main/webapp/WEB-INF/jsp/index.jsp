@@ -19,7 +19,7 @@
     <script src="webjars/angularjs/1.6.9/angular.min.js"></script>
     <script src="webjars/angularjs/1.6.9/angular-route.min.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/mailbox-messages-list/mailbox-messages-list.component.js"></script>
+    <script src="js/message/message.module.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -35,7 +35,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#!mailbox">Home</a></li>
+                <li><a href="#!mailbox">Home</a></li>
                 <li><a href="#!create-message">Create message</a></li>
                 <li><a href="#!send">Send Message</a></li>
             </ul>
