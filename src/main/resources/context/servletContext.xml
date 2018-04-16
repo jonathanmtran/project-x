@@ -8,7 +8,7 @@
 
     <context:annotation-config />
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven />
 
     <mvc:resources mapping="/js/**" location="/js/" />
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />

@@ -10,7 +10,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository("mailboxDao")
 public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
     @Autowired
     private MessageDAOImpl messageDao;

@@ -6,8 +6,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-public class UserDAOImpl implements IUserDAO {
+@Repository("userDao")
+public class UserDAOImpl extends AbstractDAOImpl implements IUserDAO {
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
@@ -47,11 +51,4 @@ public class UserDAOImpl implements IUserDAO {
         session.close();
     }
 
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 }

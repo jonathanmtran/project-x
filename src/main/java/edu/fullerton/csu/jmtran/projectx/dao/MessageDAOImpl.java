@@ -6,8 +6,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-public class MessageDAOImpl implements IMessageDAO {
+@Repository("messageDao")
+public class MessageDAOImpl extends AbstractDAOImpl implements IMessageDAO {
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
@@ -49,11 +53,4 @@ public class MessageDAOImpl implements IMessageDAO {
         return message;
     }
 
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 }
