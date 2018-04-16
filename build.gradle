@@ -41,7 +41,7 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
     compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
-    runtime "javax.mail:javax.mail-api:${javaMailVersion}"
+    runtime "com.sun.mail:javax.mail:${javaMailVersion}"
     compile "javax.servlet:jstl:${jstlVersion}"
     compile "javax.servlet:javax.servlet-api:${servletApiVersion}"
     compile "org.springframework:spring-context-support:${springFrameworkVersion}"
