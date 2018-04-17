@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -20,11 +22,20 @@ public class TelegramService extends AbstractMessagingService {
     private String baseUrl;
     @JsonIgnore
     private String token;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 
     private String urlTemplate = "{baseUrl}/bot{token}/sendMessage";
 
     @Override
     public boolean sendMessage(User recipient, Message message) {
+        if (recipient.getAttribute(this.attributeKey) == null) {
+            logger.info(
+                    String.format(
+                            "%s doesn't have %s ", recipient.getId(), this.getAttributeKey()));
+            return true;
+        }
+
         RestTemplate restTemplate = new RestTemplate();
 
         SendMessage sendMessageRequest = new SendMessage();
@@ -42,6 +53,8 @@ public class TelegramService extends AbstractMessagingService {
         try {
             requestJson = mapper.writeValueAsString(sendMessageRequest);
         } catch (JsonProcessingException jpe) {
+            logger.error(jpe.getMessage());
+
             return false;
         }
 
@@ -53,6 +66,8 @@ public class TelegramService extends AbstractMessagingService {
             response =
                     restTemplate.postForEntity(
                             requestUrl, new HttpEntity<>(requestJson, headers), String.class);
+
+            logger.debug(response.getBody());
         } catch (org.springframework.web.client.ResourceAccessException rae) {
             return false;
         }

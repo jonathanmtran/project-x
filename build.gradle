@@ -22,6 +22,7 @@ ext {
     javassistVersion = '3.13.0-GA'
     javaMailVersion = '1.6.1'
     jstlVersion = '1.2'
+    logbackVersion = '1.1.7'
     servletApiVersion = '3.0.1'
     springFrameworkVersion = '4.3.11.RELEASE'
     webjarsLocatorVersion = '0.30'
@@ -54,6 +55,8 @@ dependencies {
 
     runtime "org.javassist:javassist:${javassistVersion}"
     compile "org.hibernate:hibernate-core:${hibernateVersion}"
+
+    compile "ch.qos.logback:logback-classic:${logbackVersion}"
 }
 
 war {

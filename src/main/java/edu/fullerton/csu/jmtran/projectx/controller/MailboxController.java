@@ -4,17 +4,18 @@ import edu.fullerton.csu.jmtran.projectx.dao.IMailboxDAO;
 import edu.fullerton.csu.jmtran.projectx.dao.IMessageDAO;
 import edu.fullerton.csu.jmtran.projectx.model.MailboxMessage;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
-
-import java.util.List;
-
 import edu.fullerton.csu.jmtran.projectx.model.SendMessageRequest;
 import edu.fullerton.csu.jmtran.projectx.service.MessageSendingService;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MailboxController {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private IMailboxDAO mailboxDao;
 

@@ -7,15 +7,17 @@ import edu.fullerton.csu.jmtran.projectx.messaging.service.DatabaseService;
 import edu.fullerton.csu.jmtran.projectx.messaging.service.IMessagingService;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MessageSendingService {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private IMailboxDAO mailboxDao;
 
@@ -33,7 +35,7 @@ public class MessageSendingService {
             services = this.messagingServices;
         }
 
-        if(recipients == null) {
+        if (recipients == null) {
             recipients = this.userDao.list();
         }
 
@@ -42,7 +44,10 @@ public class MessageSendingService {
                 boolean messageSent = service.sendMessage(recipient, message);
 
                 if (!messageSent) {
-                    // Log a WARNing
+                    logger.warn(
+                            String.format(
+                                    "Unable to send message %s via %s to %s",
+                                    message.getId(), service.getSystemName(), recipient.getId()));
                 }
 
                 this.mailboxDao.sendMessage(recipient, message, service);
@@ -54,6 +59,7 @@ public class MessageSendingService {
 
     /**
      * This method will resolve the message and build the list of services from strings
+     *
      * @param recipients
      * @param messageId
      * @param services
@@ -74,6 +80,7 @@ public class MessageSendingService {
 
     /**
      * This will send a user a single message via all messaging services
+     *
      * @param recipient
      * @param message
      */

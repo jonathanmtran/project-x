@@ -3,11 +3,15 @@ package edu.fullerton.csu.jmtran.projectx.messaging.service;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
 public class EmailService extends AbstractMessagingService {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @JsonIgnore
     private MailSender mailSender;
 

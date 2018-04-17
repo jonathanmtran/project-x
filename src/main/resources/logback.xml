@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <ContextName>MessageCenter</ContextName>
+
+    <appender name="LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${catalina.home}/logs/${CONTEXT_NAME}.log</File>
+
+        <encoder>
+            <pattern>%-5level [%thread] %logger{36} %d{ISO8601} - %msg%n</pattern>
+        </encoder>
+
+        <!--
+         | Rolls the log file every 24 hours
+         | gzip the archived log file
+         | Delete archived log files older than 28 days
+         |
+         | http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy
+         +-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/${CONTEXT_NAME}.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>28</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="LOG" />
+    </root>
+
+    <logger name="edu.fullerton.csu.jmtran.projectx" additivity="false" level="DEBUG">
+        <appender-ref ref="LOG" />
+    </logger>
+
+</configuration>
