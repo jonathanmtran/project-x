@@ -12,7 +12,7 @@ public class StdoutService extends AbstractMessagingService {
     public boolean sendMessage(User recipient, Message message) {
         String format = "{ user: %s, message: %s }";
 
-        System.out.println(String.format(format, recipient.getId(), message.getMessageAbstract()));
+        logger.info(String.format(format, recipient.getId(), message.getMessageAbstract()));
 
         return true;
     }
