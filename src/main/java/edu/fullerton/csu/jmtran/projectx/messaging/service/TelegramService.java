@@ -65,7 +65,7 @@ public class TelegramService extends AbstractMessagingService {
             return response.getStatusCode().is2xxSuccessful();
         }
 
-        return root.path("ok").equals("true");
+        return root.path("ok").asBoolean();
     }
 
     public String getToken() {
