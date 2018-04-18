@@ -79,7 +79,7 @@ messageModule.component('mailboxMessagesList', {
     controller: function MailboxMessagesListController($http) {
         var self = this;
 
-        $http.get('api/v0/mailbox?userId=' + userId).then(function(response) {
+        $http.get('api/v0/mailbox?userId=' + window.localStorage.getItem('userId')).then(function(response) {
             self.mailboxMessages = response.data;
         });
     }

@@ -1,5 +1,6 @@
 var app = angular.module('messageCenterApp', [
     'ngRoute',
+    'loginModule',
     'messageModule',
 ]);
 
@@ -13,7 +14,10 @@ app.config([
 
         $routeProvider.
         when('/', {
-            templateUrl: 'js/mailbox/list.template.html',
+            redirectTo: '/login'
+        }).
+        when('/login', {
+            templateUrl: 'js/login/login.template.html',
         }).
         when('/mailbox', {
             templateUrl: 'js/mailbox/list.template.html',

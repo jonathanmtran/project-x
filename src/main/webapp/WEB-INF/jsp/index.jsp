@@ -19,6 +19,7 @@
     <script src="webjars/angularjs/1.6.9/angular.min.js"></script>
     <script src="webjars/angularjs/1.6.9/angular-route.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/login/login.module.js"></script>
     <script src="js/message/message.module.js"></script>
 </head>
 <body>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class MailboxController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private IMailboxDAO mailboxDao;
 
