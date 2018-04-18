@@ -25,7 +25,10 @@ messageModule.controller("CreateMessageController", ['$scope', '$http', function
 );
 
 messageModule.controller("SendMessageController", ['$scope', '$http', function($scope, $http) {
+    $scope.availableServices = [];
     $scope.formData = {};
+    $scope.messages = {};
+    $scope.services = [];
     $scope.step = 'choose';
     $scope.success = false;
 
@@ -36,26 +39,48 @@ messageModule.controller("SendMessageController", ['$scope', '$http', function($
 
     $http.get('api/v0/messaging-services').
     then(function successCallback(response) {
-        $scope.services = response.data;
+        $scope.availableServices = response.data;
     });
+
+    $scope.messageChange = function() {
+        $scope.message = $scope.messages.filter(function(message) {
+            return message.id === $scope.formData.message;
+        });
+
+        $scope.message = $scope.message[0];
+    }
+
+    $scope.servicesChange = function() {
+        var targetServices = $scope.formData.services;
+
+        var newServices = [];
+
+        // TODO: Clean this up
+        for(service in $scope.availableServices) {
+            for(targetSvc in targetServices) {
+                if(($scope.availableServices[service].systemName == targetSvc) && (targetServices[targetSvc] === true)) {
+                    newServices.push($scope.availableServices[service]);
+                }
+            }
+        }
+
+        $scope.services = newServices;
+    }
 
     $scope.doReview = function() {
         $scope.step = 'review'
     }
 
     $scope.sendMessage = function() {
-        var services = [];
-        var targetServices = $scope.formData.targetServices;
+        var targetServices = [];
 
-        for(service in targetServices) {
-            if(targetServices[service]) {
-                services.push(service);
-            }
+        for(svc in $scope.services) {
+            targetServices.push(svc.systemName);
         }
 
         var data = {
-            'messageId': $scope.formData.message,
-            'services': services
+            'messageId': $scope.message.id,
+            'services': targetServices
         };
 
         $http({
@@ -67,6 +92,8 @@ messageModule.controller("SendMessageController", ['$scope', '$http', function($
             }
         }).then(function successCallback(response) {
             $scope.success = true;
+
+            $scope.step = 'choose';
 
             $scope.formData = {};
         });
