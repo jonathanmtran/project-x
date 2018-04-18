@@ -6,36 +6,20 @@
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:annotation-config />
+    <bean parent="propertyConfigurer" />
+
+    <context:component-scan base-package="edu.fullerton.csu.jmtran.projectx" />
 
     <mvc:annotation-driven />
 
     <mvc:resources mapping="/js/**" location="/js/" />
+
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
-
-    <bean parent="propertyConfigurer" />
-
-    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MailboxController">
-        <property name="mailboxDao" ref="mailboxDao"/>
-        <property name="messageDao" ref="messageDao"/>
-    </bean>
-
-    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MessageController">
-        <property name="messageDao" ref="messageDao"/>
-    </bean>
-
-    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MessagingServiceController">
-        <property name="services" ref="messagingServices" />
-    </bean>
-
-    <bean class="edu.fullerton.csu.jmtran.projectx.controller.LoginController" />
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
-
-    <bean class="edu.fullerton.csu.jmtran.projectx.controller.MainController" />
 
 </beans>
