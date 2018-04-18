@@ -30,7 +30,7 @@ public class MailboxController {
     public List<MailboxMessage> getMessages(@RequestParam("userId") String userId) {
         List<MailboxMessage> messages = null;
 
-        messages = this.mailboxDao.getMessages(userId);
+        messages = this.mailboxDao.getMessages(userId, null);
 
         return messages;
     }

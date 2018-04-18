@@ -33,6 +33,35 @@ public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
+    public List<MailboxMessage> getMessages(String userId, String messagingService) {
+        Session session = this.sessionFactory.openSession();
+
+        String queryStr = "FROM MailboxMessage WHERE USER_ID = :user_id AND MESSAGING_SERVICE {} :messaging_service";
+
+        if (messagingService == null) {
+            queryStr = queryStr.replace("{}", "IS");
+            queryStr = queryStr.replace(":messaging_service", "NULL");
+        }
+        else {
+            queryStr = queryStr.replace("{}", "=");
+        }
+
+        Query query = session.createQuery(queryStr);
+        query.setParameter("user_id", userId);
+
+        if (messagingService != null) {
+            query.setParameter("messaging_service", messagingService);
+        }
+
+        List<MailboxMessage> messages = query.list();
+
+        session.close();
+
+        return messages;
+    }
+
+    @Override
     public boolean sendMessage(User recipient, Message message, IMessagingService service) {
         MailboxMessage mailboxMessage = new MailboxMessage();
 

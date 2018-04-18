@@ -9,5 +9,7 @@ import java.util.List;
 public interface IMailboxDAO {
     public List<MailboxMessage> getMessages(String userId);
 
+    public List<MailboxMessage> getMessages(String userId, String messagingService);
+
     public boolean sendMessage(User recipient, Message message, IMessagingService service);
 }
