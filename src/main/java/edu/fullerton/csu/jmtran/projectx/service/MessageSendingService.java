@@ -7,12 +7,13 @@ import edu.fullerton.csu.jmtran.projectx.messaging.service.DatabaseService;
 import edu.fullerton.csu.jmtran.projectx.messaging.service.IMessagingService;
 import edu.fullerton.csu.jmtran.projectx.model.Message;
 import edu.fullerton.csu.jmtran.projectx.model.User;
-import java.util.ArrayList;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MessageSendingService {
