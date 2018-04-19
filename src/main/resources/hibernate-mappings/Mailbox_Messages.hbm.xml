@@ -3,18 +3,19 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="edu.fullerton.csu.jmtran.projectx.model" default-cascade="none">
+<hibernate-mapping package="edu.fullerton.csu.jmtran.projectx.model">
 
     <class name="MailboxMessage" table="MAILBOX_MESSAGES">
         <id name="id" column="ID" type="integer">
-            <generator class="identity"/>
+            <generator class="identity" />
         </id>
 
         <property name="userId" column="USER_ID" type="string" />
         <property name="messageId" column="MESSAGE_ID" type="integer" />
         <property name="messagingService" column="MESSAGING_SERVICE" type="string" />
-        <property name="massMessagingId" column="MASS_MESSAGING_ID" type="integer"/>
-        <property name="receivedDate" column="RECEIVED_DATE" type="timestamp"/>
+        <property name="massMessagingId" column="MASS_MESSAGING_ID" type="integer" />
+        <property name="receivedDate" column="RECEIVED_DATE" type="timestamp" />
+        <property name="seenDate" column="SEEN_DATE" type="timestamp" />
 
         <many-to-one name="message" class="Message" column="MESSAGE_ID" insert="false" update="false" lazy="false" />
     </class>

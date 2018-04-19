@@ -6,11 +6,11 @@ public class MailboxMessage {
     private int id;
     private String userId;
     private int messageId;
+    private Message message;
     private String massMessagingId;
     private String messagingService;
     private Date receivedDate;
-
-    private Message message;
+    private Date seenDate;
 
     public MailboxMessage() {
         // Do nothing
@@ -48,6 +48,14 @@ public class MailboxMessage {
         this.massMessagingId = massMessagingId;
     }
 
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
     public String getMessagingService() {
         return messagingService;
     }
@@ -64,11 +72,11 @@ public class MailboxMessage {
         this.receivedDate = receivedDate;
     }
 
-    public Message getMessage() {
-        return message;
+    public Date getSeenDate() {
+        return seenDate;
     }
 
-    public void setMessage(Message message) {
-        this.message = message;
+    public void setSeenDate(Date seenDate) {
+        this.seenDate = seenDate;
     }
 }
