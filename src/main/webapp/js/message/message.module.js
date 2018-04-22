@@ -74,8 +74,8 @@ messageModule.controller("SendMessageController", ['$scope', '$http', function($
     $scope.sendMessage = function() {
         var targetServices = [];
 
-        for(svc in $scope.services) {
-            targetServices.push(svc.systemName);
+        for(var key in $scope.services) {
+            targetServices.push($scope.services[key].systemName);
         }
 
         var data = {
