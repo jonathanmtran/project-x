@@ -28,7 +28,7 @@ public class EmailService extends AbstractMessagingService {
         @SuppressWarnings("unchecked")
         String emailAddress = recipient.getAttribute(this.attributeKey);
 
-        if (emailAddress.isEmpty()) {
+        if (emailAddress == null || emailAddress.isEmpty()) {
             return false;
         }
 
