@@ -17,6 +17,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * This service sends messages to Telegram users via a bot. In order for users to get messages from
+ * this service, they must have the TelegramService.user.id user attribute defined
+ */
 public class TelegramService extends AbstractMessagingService {
     @JsonIgnore
     private String baseUrl;

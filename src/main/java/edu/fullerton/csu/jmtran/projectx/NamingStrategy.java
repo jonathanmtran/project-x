@@ -2,6 +2,10 @@ package edu.fullerton.csu.jmtran.projectx;
 
 import org.hibernate.cfg.ImprovedNamingStrategy;
 
+/**
+ * This class is designed to prefix the database tables. Configuration is done via the
+ * sessionFactory bean
+ */
 public class NamingStrategy extends ImprovedNamingStrategy {
     private String prefix;
 

@@ -9,6 +9,10 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
+/**
+ * This service sends an email via SMTP. In order for users to receive email, they must have the
+ * EmailService.emailAddress user attribute
+ */
 public class EmailService extends AbstractMessagingService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

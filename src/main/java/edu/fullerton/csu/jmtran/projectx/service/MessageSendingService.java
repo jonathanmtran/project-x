@@ -30,6 +30,13 @@ public class MessageSendingService {
     @Autowired
     private IUserDAO userDao;
 
+    /**
+     * Send the known message to a list of known users via known services
+     *
+     * @param recipients A list of users to send the message to
+     * @param message The message to send
+     * @param services A list of services to send the message to
+     */
     public void sendMessages(
             List<User> recipients, Message message, List<IMessagingService> services) {
         if (services == null) {
