@@ -39,3 +39,11 @@ To implement your own messaging service(s)
 - Extend `AbstractMessagingService`
 - Configure a bean in `applicationContext.xml`
 - Add the bean to the `messagingServices` bean (in `applicationContext.xml`)
+
+## REST API
+
+Project X has a REST API for applications to use to retrieve a user's mailbox messages
+
+### GET `/api/v0/mailbox?userId={userId}`
+
+This endpoint retrieves the messages sent to `{userId}` using Project X.

@@ -26,6 +26,12 @@ public class MailboxController {
     @Autowired
     private MessageSendingService messageSendingService;
 
+    /**
+     * Retrieves userId's messages not sent by a service that interacts with an external system
+     *
+     * @param userId
+     * @return A JSON list of MailboxMessage
+     */
     @RequestMapping(value = "/api/v0/mailbox")
     public List<MailboxMessage> getMessages(@RequestParam("userId") String userId) {
         List<MailboxMessage> messages = null;
