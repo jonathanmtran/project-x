@@ -14,7 +14,6 @@ public class MessagingServiceController {
     private List<IMessagingService> services;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
     @RequestMapping(value = "/api/v0/messaging-services")
     public List<IMessagingService> getMessagingServices() {
         return this.services;

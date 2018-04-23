@@ -1,23 +1,22 @@
 package edu.fullerton.csu.jmtran.projectx.controller;
 
-import org.hibernate.Session;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 @RestController
 public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public LoginPayload login(HttpServletRequest httpRequest, @RequestBody LoginPayload loginRequest) {
+    public LoginPayload login(
+            HttpServletRequest httpRequest, @RequestBody LoginPayload loginRequest) {
         String userId = loginRequest.getUserId();
 
         LoginPayload response = new LoginPayload();
 
-        if(userId.isEmpty()) {
+        if (userId.isEmpty()) {
             return response;
         }
 

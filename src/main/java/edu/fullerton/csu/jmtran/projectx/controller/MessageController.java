@@ -14,7 +14,6 @@ public class MessageController {
     private IMessageDAO messageDao;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
     @RequestMapping(value = "/api/v0/message/{messageId}")
     public Message getMessage(@PathVariable("messageId") int messageId) {
         return this.messageDao.get(messageId);

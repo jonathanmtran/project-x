@@ -52,5 +52,4 @@ public class MessageDAOImpl extends AbstractDAOImpl implements IMessageDAO {
 
         return message;
     }
-
 }

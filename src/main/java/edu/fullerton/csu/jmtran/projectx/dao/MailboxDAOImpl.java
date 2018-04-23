@@ -22,7 +22,9 @@ public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
     public List<MailboxMessage> getMessages(String userId) {
         Session session = this.sessionFactory.openSession();
 
-        Query query = session.createQuery("FROM MailboxMessage WHERE USER_ID = :user_id ORDER BY RECEIVED_DATE DESC");
+        Query query =
+                session.createQuery(
+                        "FROM MailboxMessage WHERE USER_ID = :user_id ORDER BY RECEIVED_DATE DESC");
         query.setParameter("user_id", userId);
 
         List<MailboxMessage> messages = query.list();
@@ -37,13 +39,13 @@ public class MailboxDAOImpl extends AbstractDAOImpl implements IMailboxDAO {
     public List<MailboxMessage> getMessages(String userId, String messagingService) {
         Session session = this.sessionFactory.openSession();
 
-        String queryStr = "FROM MailboxMessage WHERE USER_ID = :user_id AND MESSAGING_SERVICE {} :messaging_service ORDER BY RECEIVED_DATE DESC";
+        String queryStr =
+                "FROM MailboxMessage WHERE USER_ID = :user_id AND MESSAGING_SERVICE {} :messaging_service ORDER BY RECEIVED_DATE DESC";
 
         if (messagingService == null) {
             queryStr = queryStr.replace("{}", "IS");
             queryStr = queryStr.replace(":messaging_service", "NULL");
-        }
-        else {
+        } else {
             queryStr = queryStr.replace("{}", "=");
         }
 
